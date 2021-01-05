@@ -12,11 +12,11 @@ def indiceGulpease(testo, path):
     pp = len(re.findall('[.]+\s+[.]', testo)) #prende tutti i '. .': è molto utile se usate LaTeX, dove nella tableOfContents ci sono tutti i punti per ogni sezione
     dp = len(re.findall('[:]+\n', testo))  #prende tutti i ':' seguito da un a capo
     vc = len(re.findall('[,]+\n', testo)) #prende tutte le virgole seguite da un a capo (ho preso come riferimento l'inizio delle lettere dove si scrive 'Caro Rossi Mario,(\n)')
-    vp = len(re.findall('[v]+[.]+\s', testo)) #Utile se avete diciture nel vostro documento (se per esempio sono presenti diciture di versioni 'v. ', USATELA SOLO SE AVETE UNO SPAZIO DOPO IL PUNTO, DATO CHE È CONTATO IN ps)
+    #vp = len(re.findall('[v]+[.]+\s', testo)) #Utile se avete diciture nel vostro documento (se per esempio sono presenti diciture di versioni 'v. ', USATELA SOLO SE AVETE UNO SPAZIO DOPO IL PUNTO, DATO CHE È CONTATO IN ps)
 
     #come si può vedere, pp è contato due volte, questo perchè una volta che conta '. .' passa alla dicitura seguente.
     # ad esempio se ci sono '. . . . .'  conta 2 occorrenze '[. .] [. .] .', quando in realtà ne sono presenti 4
-    punti = ps + pv + dp + vc - (pp)*2 - vp
+    punti = ps + pv + dp + vc - (pp)*2 #- vp
 
     #da come potete intuire nell'esempio sopra descritto, il conteggio dei punti (aka frasi)
     #non è del tutto corretto: sono riuscito a stimare uno scarto del 15% in base a dei documenti esempio (corti) in mio possesso
